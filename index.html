@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravi Sai Vigneswar - Resume</title>
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #F5A623;
+            --background-color: #f4f4f4;
+            --text-color: #333;
+            --highlight-color: #50E3C2;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 40px;
+            color: white;
+        }
+
+        .sidebar h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .contact p, .skills ul li {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .skills ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .main {
+            padding: 40px;
+        }
+
+        .main h2 {
+            font-size: 22px;
+            border-bottom: 3px solid var(--highlight-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .links a {
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .interactive {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .interactive:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>RAVI SAI VIGNESWAR</h1>
+            <div class="contact">
+                <p>Email: ravisairockey2004@gmail.com</p>
+                <p>Phone: +91 7285994545</p>
+                <p>Location: Bangalore, India 560064</p>
+            </div>
+            <div class="skills">
+                <h2>Skills</h2>
+                <ul>
+                    <li>Game Development</li>
+                    <li>Unity, Unreal Engine, UEFN</li>
+                    <li>Web Games</li>
+                    <li>C#, C++</li>
+                    <li>Python</li>
+                    <li>HTML, CSS, JavaScript</li>
+                    <li>3D Modeling and Animation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="summary">
+                <h2>Professional Summary</h2>
+                <p>I am a passionate game developer skilled in creating immersive experiences using Unity, Unreal Engine, and web-based platforms.</p>
+            </div>
+
+            <div class="links">
+                <h2>Websites, Portfolios, Profiles</h2>
+                <p><a href="https://github.com/ravisairockey" target="_blank" class="interactive">GitHub</a></p>
+                <p><a href="https://ravisairockey.github.io/RSV-Gamer-portfolio/" target="_blank" class="interactive">Portfolio</a></p>
+            </div>
+
+            <div class="project">
+                <h2>Project</h2>
+                <p>3D Adventure Game: Developed a fully interactive 3D adventure game in Unity.</p>
+            </div>
+
+            <div class="personal">
+                <h2>Personal Information</h2>
+                <p>Title: Game Developer</p>
+            </div>
+
+            <div class="education">
+                <h2>Education</h2>
+                <p>Jain University, Bangalore</p>
+                <p>Expected: January 2025</p>
+                <p>Bachelor of Arts: Communication Design (Game Art and Design)</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
