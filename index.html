@@ -4,149 +4,333 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ravi Sai Vigneswar - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/gsap@3.9.1/dist/gsap.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4A90E2;
-            --secondary-color: #F5A623;
-            --background-color: #f4f4f4;
-            --text-color: #333;
-            --highlight-color: #50E3C2;
+            --primary-color-light: #4A90E2;
+            --secondary-color-light: #F5A623;
+            --background-color-light: #ecf0f1;
+            --text-color-light: #2c3e50;
+            --highlight-color-light: #50E3C2;
+
+            --primary-color-dark: #6A4FBF;
+            --secondary-color-dark: #FF6B6B;
+            --background-color-dark: #1E1E2F;
+            --text-color-dark: #EDEDED;
+            --highlight-color-dark: #FFC857;
+
             --font-family: 'Poppins', sans-serif;
+            --black: #000000;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             font-family: var(--font-family);
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
+            background-color: var(--background-color-light);
+            color: var(--text-color-light);
+            line-height: 1.8;
+            padding: 20px;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+
+        body.light-mode {
+            background-color: var(--background-color-light);
+            color: var(--text-color-light);
+        }
+
+        body.dark-mode {
+            background-color: var(--background-color-dark);
+            color: var(--text-color-dark);
         }
 
         .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            background: white;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 1100px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
+            transition: background 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+
+        .dark-mode .container {
+            background: rgba(30, 30, 47, 0.9);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color-light), var(--secondary-color-light));
+            padding: 60px;
+            color: white;
+            text-align: center;
+            transition: all 0.5s ease-in-out;
+            position: relative;
             overflow: hidden;
         }
 
-        .sidebar {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        .dark-mode .header {
+            background: linear-gradient(135deg, var(--primary-color-dark), var(--secondary-color-dark));
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 10.01%);
+            background-size: 20px 20px;
+            animation: moveBackground 3s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            from { transform: translateY(0); }
+            to { transform: translateY(20px); }
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header p {
+            font-size: 18px;
+            animation: float 3s ease-in-out infinite 0.5s;
+        }
+
+        .content {
             padding: 40px;
-            color: white;
         }
 
-        .sidebar h1 {
-            font-size: 28px;
-            margin-bottom: 15px;
+        .section h2 {
+            font-size: 22px;
+            border-bottom: 3px solid var(--highlight-color-light);
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            color: var(--primary-color-light);
+            transition: all 0.3s ease-in-out;
         }
 
-        .contact p, .skills ul li {
-            margin: 8px 0;
-            font-size: 16px;
+        .dark-mode .section h2 {
+            border-bottom: 3px solid var(--highlight-color-dark);
+            color: var(--primary-color-dark);
         }
 
         .skills ul {
             list-style: none;
             padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .main {
-            padding: 40px;
-        }
-
-        .main h2 {
-            font-size: 22px;
-            border-bottom: 3px solid var(--highlight-color);
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-        }
-
-        .links a {
-            color: var(--primary-color);
+        .skills ul li {
+            background: var(--secondary-color-light);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
             font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
         }
 
-        .links a:hover {
-            color: var(--secondary-color);
+        .dark-mode .skills ul li {
+            background: var(--secondary-color-dark);
         }
 
-        .interactive {
-            transition: transform 0.3s ease-in-out;
+        .skills ul li:hover {
+            background: var(--highlight-color-light);
+            transform: scale(1.1);
         }
 
-        .interactive:hover {
-            transform: translateY(-5px);
+        .dark-mode .skills ul li:hover {
+            background: var(--highlight-color-dark);
+        }
+
+        /* New Toggle Theme Icon */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle i {
+            font-size: 1.5rem;
+            color: var(--text-color-light);
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        .dark-mode .theme-toggle i {
+            color: var(--text-color-dark);
+        }
+
+        .theme-toggle .fa-sun {
+            position: absolute;
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        .theme-toggle .fa-moon {
+            position: absolute;
+            opacity: 0;
+            transform: rotate(90deg);
+        }
+
+        .dark-mode .theme-toggle .fa-sun {
+            opacity: 0;
+            transform: rotate(90deg);
+        }
+
+        .dark-mode .theme-toggle .fa-moon {
+            opacity: 1;
+            transform: rotate(0deg);
         }
 
         @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
+            .theme-toggle {
+                width: 35px;
+                height: 35px;
+                top: 15px;
+                right: 15px;
             }
 
-            .sidebar {
-                text-align: center;
+            .theme-toggle i {
+                font-size: 1.2rem;
+            }
+
+            .header, .content {
+                padding: 30px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .theme-toggle {
+                width: 30px;
+                height: 30px;
+                top: 10px;
+                right: 10px;
+            }
+
+            .theme-toggle i {
+                font-size: 1rem;
+            }
+
+            .header h1 {
+                font-size: 24px;
             }
         }
     </style>
 </head>
-<body>
+<body class="light-mode">
+    <!-- Theme Toggle Icon -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+    </div>
+
     <div class="container">
-        <div class="sidebar">
+        <div class="header">
             <h1>RAVI SAI VIGNESWAR</h1>
-            <div class="contact">
-                <p>Email: ravisairockey2004@gmail.com</p>
-                <p>Phone: +91 7285994545</p>
-                <p>Location: Bangalore, India 560064</p>
+            <p>Game Developer | Unity & Unreal Engine Enthusiast</p>
+        </div>
+
+        <div class="content">
+            <div class="section contact">
+                <h2>Contact Information</h2>
+                <p><i class="fa fa-envelope"></i> Email: ravisairockey2004@gmail.com</p>
+                <p><i class="fa fa-phone"></i> Phone: +91 7285994545</p>
+                <p><i class="fa fa-map-marker-alt"></i> Location: Bangalore, India 560064</p>
             </div>
-            <div class="skills">
+
+            <div class="section skills">
                 <h2>Skills</h2>
                 <ul>
                     <li>Game Development</li>
-                    <li>Unity, Unreal Engine, UEFN</li>
+                    <li>Unity & Unreal Engine</li>
                     <li>Web Games</li>
-                    <li>C#, C++</li>
-                    <li>Python</li>
+                    <li>C#, C++, Python</li>
                     <li>HTML, CSS, JavaScript</li>
-                    <li>3D Modeling and Animation</li>
+                    <li>3D Modeling & Animation</li>
                 </ul>
             </div>
-        </div>
 
-        <div class="main">
-            <div class="summary">
+            <div class="section summary">
                 <h2>Professional Summary</h2>
-                <p>I am a passionate game developer skilled in creating immersive experiences using Unity, Unreal Engine, and web-based platforms.</p>
+                <p>Experienced game developer passionate about creating immersive experiences with a strong focus on gameplay, performance, and user engagement.</p>
             </div>
 
-            <div class="links">
-                <h2>Websites, Portfolios, Profiles</h2>
-                <p><a href="https://github.com/ravisairockey" target="_blank" class="interactive">GitHub</a></p>
-                <p><a href="https://ravisairockey.github.io/RSV-Gamer-portfolio/" target="_blank" class="interactive">Portfolio</a></p>
-            </div>
-
-            <div class="project">
-                <h2>Project</h2>
-                <p>3D Adventure Game: Developed a fully interactive 3D adventure game in Unity.</p>
-            </div>
-
-            <div class="personal">
-                <h2>Personal Information</h2>
-                <p>Title: Game Developer</p>
-            </div>
-
-            <div class="education">
-                <h2>Education</h2>
-                <p>Jain University, Bangalore</p>
-                <p>Expected: January 2025</p>
-                <p>Bachelor of Arts: Communication Design (Game Art and Design)</p>
+            <div class="section links">
+                <h2>Websites & Profiles</h2>
+                <p><a href="https://github.com/ravisairockey" target="_blank"><i class="fa fa-github"></i> GitHub</a></p>
+                <p><a href="https://ravisairockey.github.io/RSV-Gamer-portfolio/" target="_blank"><i class="fa fa-briefcase"></i> Portfolio</a></p>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.9.1/dist/gsap.min.js"></script>
+    <script>
+        // Theme Toggle Function
+        function toggleTheme() {
+            const body = document.body;
+            const container = document.querySelector('.container');
+
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                gsap.to(container, { backgroundColor: 'rgba(30, 30, 47, 0.9)', duration: 0.5 });
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                gsap.to(container, { backgroundColor: 'rgba(255, 255, 255, 0.9)', duration: 0.5 });
+            }
+        }
+
+        // GSAP Animations
+        gsap.from('.header h1', { duration: 1, y: -50, opacity: 0, ease: 'power2.out' });
+        gsap.from('.header p', { duration: 1, y: 50, opacity: 0, ease: 'power2.out', delay: 0.5 });
+        gsap.from('.section', { duration: 1, y: 50, opacity: 0, stagger: 0.2, ease: 'power2.out', delay: 1 });
+    </script>
 </body>
 </html>
